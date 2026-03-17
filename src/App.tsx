@@ -6,6 +6,20 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 
+import welcomeScreenImg from "./assets/welcome_screen.png";
+import logoWelcomeImg from "./assets/logo_welcome.png";
+import logoOnboardingImg from "./assets/logo_onboarding.png";
+import logoImg from "./assets/logo.png";
+import avatar1 from "./assets/avatar_1.png";
+import avatar2 from "./assets/avatar_2.png";
+import avatar3 from "./assets/avatar_3.png";
+import avatar4 from "./assets/avatar_4.png";
+import avatar5 from "./assets/avatar_5.png";
+import avatar6 from "./assets/avatar_6.png";
+import avatar7 from "./assets/avatar_7.png";
+
+const AVATARS = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7];
+
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<"welcome" | "signup" | "login" | "onboarding_goal" | "onboarding_info" | "onboarding_avatar" | "onboarding_diagnostic" | "onboarding_test" | "onboarding_result" | "onboarding_academic_goals" | "dashboard" | "profile" | "lessons" | "active_test" | "test_result" | "ai_yds">("welcome");
   const [profileTab, setProfileTab] = useState("Profil");
@@ -176,7 +190,7 @@ function WelcomeScreen({ onGetStarted, onSignIn }: { onGetStarted: () => void; o
     >
       {/* Background Image - The image provided by the user */}
       <img 
-        src="/images/welcome_screen.png" 
+        src={welcomeScreenImg} 
         alt="Welcome" 
         className="absolute inset-0 w-full h-full object-cover"
         referrerPolicy="no-referrer"
@@ -188,7 +202,7 @@ function WelcomeScreen({ onGetStarted, onSignIn }: { onGetStarted: () => void; o
       
       {/* Fallback Gradient and Logo if image is missing */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#b00000] to-[#7a0000] -z-10 flex flex-col items-center justify-center">
-        <img src="/images/logo_welcome.png" alt="Logo" className="w-64 h-auto mb-4" referrerPolicy="no-referrer" />
+        <img src={logoWelcomeImg} alt="Logo" className="w-64 h-auto mb-4" referrerPolicy="no-referrer" />
         <h2 className="text-white text-5xl font-serif">YDSKazan</h2>
       </div>
 
@@ -488,12 +502,12 @@ function PersonalInfoScreen({ onNext }: { onNext: () => void }) {
     >
       <div className="flex justify-center mb-8">
         <img 
-          src="/images/logo_onboarding.png" 
+          src={logoOnboardingImg} 
           alt="Logo" 
           className="w-32 h-auto"
           referrerPolicy="no-referrer"
           onError={(e) => {
-            e.currentTarget.src = "/images/logo.png";
+            e.currentTarget.src = logoImg;
           }}
         />
       </div>
@@ -578,15 +592,7 @@ function PersonalInfoScreen({ onNext }: { onNext: () => void }) {
 function AvatarSelectionScreen({ onNext }: { onNext: (avatar: string) => void }) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const avatars = [
-    "/images/avatar_1.png",
-    "/images/avatar_2.png",
-    "/images/avatar_3.png",
-    "/images/avatar_4.png",
-    "/images/avatar_5.png",
-    "/images/avatar_6.png",
-    "/images/avatar_7.png",
-  ];
+  const avatars = AVATARS;
 
   return (
     <motion.div 
@@ -615,7 +621,7 @@ function AvatarSelectionScreen({ onNext }: { onNext: (avatar: string) => void })
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
               onError={(e) => {
-                e.currentTarget.src = `/images/avatar_${index + 1}.png`;
+                e.currentTarget.src = avatars[index];
               }}
             />
             {selectedIndex === index && (
@@ -983,7 +989,7 @@ function MountainScreen({ userScore, onSelectLevel }: { userScore: number; onSel
                 >
                   <div className="relative w-12 h-12 rounded-full border-2 border-blue-400 overflow-hidden shadow-lg">
                     <img 
-                      src="/images/avatar_1.png" 
+                      src={avatar1} 
                       alt="User" 
                       className="w-full h-full object-cover" 
                       referrerPolicy="no-referrer"
@@ -1460,7 +1466,7 @@ function ProfileScreen({ score, avatar, onBack, onHomeClick, onLessonsClick, onA
               {/* Video Lesson Card */}
               <div className="relative rounded-[2rem] overflow-hidden aspect-video mb-8">
                 <img 
-                  src="/images/welcome_screen.png" 
+                  src={welcomeScreenImg} 
                   alt="Lesson" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
