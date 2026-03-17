@@ -176,7 +176,7 @@ function WelcomeScreen({ onGetStarted, onSignIn }: { onGetStarted: () => void; o
     >
       {/* Background Image - The image provided by the user */}
       <img 
-        src="/welcome_screen.png" 
+        src="/images/welcome_screen.png" 
         alt="Welcome" 
         className="absolute inset-0 w-full h-full object-cover"
         referrerPolicy="no-referrer"
@@ -188,7 +188,7 @@ function WelcomeScreen({ onGetStarted, onSignIn }: { onGetStarted: () => void; o
       
       {/* Fallback Gradient and Logo if image is missing */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#b00000] to-[#7a0000] -z-10 flex flex-col items-center justify-center">
-        <img src="/logo_welcome.png" alt="Logo" className="w-64 h-auto mb-4" />
+        <img src="/images/logo_welcome.png" alt="Logo" className="w-64 h-auto mb-4" referrerPolicy="no-referrer" />
         <h2 className="text-white text-5xl font-serif">YDSKazan</h2>
       </div>
 
@@ -488,12 +488,12 @@ function PersonalInfoScreen({ onNext }: { onNext: () => void }) {
     >
       <div className="flex justify-center mb-8">
         <img 
-          src="/logo_onboarding.png" 
+          src="/images/logo_onboarding.png" 
           alt="Logo" 
           className="w-32 h-auto"
           referrerPolicy="no-referrer"
           onError={(e) => {
-            e.currentTarget.src = "https://picsum.photos/seed/onboarding/200/200?blur=1";
+            e.currentTarget.src = "/images/logo.png";
           }}
         />
       </div>
@@ -579,13 +579,13 @@ function AvatarSelectionScreen({ onNext }: { onNext: (avatar: string) => void })
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const avatars = [
-    "/avatar_1.png",
-    "/avatar_2.png",
-    "/avatar_3.png",
-    "/avatar_4.png",
-    "/avatar_5.png",
-    "/avatar_6.png",
-    "/avatar_7.png",
+    "/images/avatar_1.png",
+    "/images/avatar_2.png",
+    "/images/avatar_3.png",
+    "/images/avatar_4.png",
+    "/images/avatar_5.png",
+    "/images/avatar_6.png",
+    "/images/avatar_7.png",
   ];
 
   return (
@@ -615,7 +615,7 @@ function AvatarSelectionScreen({ onNext }: { onNext: (avatar: string) => void })
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
               onError={(e) => {
-                e.currentTarget.src = `https://picsum.photos/seed/avatar${index + 1}/200/200`;
+                e.currentTarget.src = `/images/avatar_${index + 1}.png`;
               }}
             />
             {selectedIndex === index && (
@@ -983,7 +983,7 @@ function MountainScreen({ userScore, onSelectLevel }: { userScore: number; onSel
                 >
                   <div className="relative w-12 h-12 rounded-full border-2 border-blue-400 overflow-hidden shadow-lg">
                     <img 
-                      src="https://picsum.photos/seed/avatar_user/100/100" 
+                      src="/images/avatar_1.png" 
                       alt="User" 
                       className="w-full h-full object-cover" 
                       referrerPolicy="no-referrer"
@@ -1460,9 +1460,10 @@ function ProfileScreen({ score, avatar, onBack, onHomeClick, onLessonsClick, onA
               {/* Video Lesson Card */}
               <div className="relative rounded-[2rem] overflow-hidden aspect-video mb-8">
                 <img 
-                  src="https://picsum.photos/seed/lesson/800/450" 
+                  src="/images/welcome_screen.png" 
                   alt="Lesson" 
                   className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
                   <div className="bg-white/20 backdrop-blur-md w-fit px-3 py-1 rounded-full mb-2">
